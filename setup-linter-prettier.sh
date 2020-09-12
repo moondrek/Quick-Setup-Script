@@ -7,11 +7,11 @@ const fs = require("fs");
 
 const text = require("./.eslintrc");
 let filename;
-if (fs.existsSync("./.eslintrc.json")) {
-  filename = "./.eslintrc.json";
-} else if (fs.existsSync("./.eslintrc.js")) {
+if (fs.existsSync("./.eslintrc.js")) {
   filename = "./.eslintrc.js";
-}
+} else if (fs.existsSync("./.eslintrc.json")) {
+  filename = "./.eslintrc.json";
+} else {throw new Error ('.eslintrc config file not found!')}
 
 if (!text.extends) {
   text.extends = "prettier";
@@ -27,7 +27,7 @@ if (filename === "./.eslintrc.js") {
 }
 
 fs.writeFile(filename, newText, () => {
-  console.log("foo");
+
 });
 End-of-message
 
